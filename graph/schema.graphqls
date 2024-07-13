@@ -1,0 +1,57 @@
+
+type Query {
+  user(id:ID):User!
+  task(id:ID):Task!
+  tasks: [Task]!
+}
+
+type Mutation {
+  register(
+    userName: String!
+    password: String!
+    email: String!
+  ): User!
+
+  login(
+    userName: String!
+    password: String!
+  ): UserLogin!
+
+  createTask(
+    title: String!
+    content: String!
+    status: Boolean!
+  ): Task!
+  
+  updateTask(
+    id: ID!
+    title: String
+    content: String
+    status: Boolean
+  ): Task!
+
+  deleteTask(
+    id: ID!
+  ): String!
+}
+
+
+type User {
+  id:String!
+  username:String!
+  email:String!
+}
+
+type UserLogin {
+  id:ID!
+  username:String!
+  email:String!
+  token:String! 
+}
+
+type Task {
+  id:ID!
+  title:String!
+  content:String!
+  status:Boolean!
+}
